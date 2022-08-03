@@ -1,6 +1,5 @@
 import React, { useState} from "react";
 import ChoiceComponents from "./ChoiceComponents"
-import TakeSurvey from "./TakeSurvey"
 import ConfirmPage from "./ConfirmPage"
 
 const CreateSurvey=()=>{
@@ -10,7 +9,7 @@ const [itemlist,setitemlist]=useState([{id:1,value:""}])
 const [itemlist2,setitemlist2]=useState([{id:1,value:"Yes"},{id:2,value:"No"}])
 const [ispublish, setPublish]=useState(false)
 const handleChange=(e)=>{
-if(e.target.value=="multiselect"){
+if(e.target.value==="multiselect"){
 setIsVisible2(false)
 setIsVisible(true)
 }
@@ -47,12 +46,12 @@ console.log(itemlist)
 
 const Delete=(e)=>{
 console.log(e.target.parentElement.firstChild.value)
-setitemlist(itemlist.filter((data)=>data.id!=e.target.parentElement.id))
+setitemlist(itemlist.filter((data)=>data.id!==e.target.parentElement.id))
 }
 
 const Delete2=(e)=>{
 console.log(e.target.parentElement.firstChild.value)
-setitemlist2(itemlist2.filter((data)=>data.id!=e.target.parentElement.id))
+setitemlist2(itemlist2.filter((data)=>data.id!==e.target.parentElement.id))
 }
 
 const addQuestion=()=>{
@@ -68,7 +67,7 @@ setPublish(true)
 }
 
 return (
-<div>
+<div style={{display:"flex", justifyContent:"center"}}>
 {!ispublish ?
 <div>
 <select onChange={(e)=>handleChange(e)}>
@@ -101,7 +100,7 @@ return (
 }
 
 {
-((isVisible && itemlist.length==4) || (isVisible2 && itemlist2.length==2 )) && <div>
+((isVisible && itemlist.length===4) || (isVisible2 && itemlist2.length===2 )) && <div>
 <button onClick={()=>addQuestion()}>Add Question</button>
 <button onClick={()=>publish()}>Publish</button>
 </div>
